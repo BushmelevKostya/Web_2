@@ -23,6 +23,8 @@ tasks.withType(JavaCompile) {
 
 dependencies {
   compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
+  compileOnly('jakarta.ejb:jakarta.ejb-api:4.0.1')
+  compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0')
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
