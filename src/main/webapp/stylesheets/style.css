@@ -1,0 +1,369 @@
+@font-face {
+    font-family: distroy;
+    src: url("../fonts/distroy.23.ttf");
+}
+
+@font-face {
+    font-family: rurintania;
+    src: url("../fonts/rurintania.ttf");
+}
+
+/*Наследование*/
+body {
+    font-family: distroy, sans-serif;
+    font-size: large;
+    color: yellow;
+    background-image: url("../img/fon.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.side-panel {
+    background-image: url("../img/wood.jpg");
+    background-size: 100%;
+}
+
+.border li:nth-child(2){border-color: #8bc63e;}
+.border li:nth-child(3){border-color: #fcba30;}
+.border li:nth-child(4){border-color: #1ccfc9;}
+.border li:nth-child(5){border-color: #493224;}
+.border li:hover {border-left: 10px solid transparent;}
+.border li:nth-child(1):hover {}
+.border li:nth-child(2):hover {}
+.border li:nth-child(3):hover {}
+.border li:nth-child(4):hover {}
+.border li:nth-child(5):hover {}
+
+/*Каскадирование*/
+h4 {
+    color: red;
+}
+
+.header {
+    color: red;
+}
+
+.header {
+    text-align: center;
+    font-family: distroy, sans-serif;
+    font-size: large;
+    color: yellow;
+    font-style: italic;
+}
+
+p {
+    font-family: "Trebuchet MS", "Lucida Sans", sans-serif;
+    font-size: 15px;
+    padding: 7px 40px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-align: left;
+    text-indent: 30px;
+}
+/*Псевдоэлемент*/
+p::first-letter {
+    font-family: rurintania, sans-serif;
+    font-size: 40px;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(45deg, red, white);
+}
+
+ul {
+    padding: 40px;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+    font-family: "Trebuchet MS", "Lucida Sans", sans-serif;
+    font-size: 14px;
+    padding: 7px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 10px solid #f05d22;
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+    -2px -2px 5px 0 rgba(0,0,0,.1),
+    2px 2px 5px 0 rgba(0,0,0,.1),
+    -2px 2px 5px 0 rgba(0,0,0,.1);
+    letter-spacing: 1px;
+    transition: 0.3s all linear;
+}
+
+.li-tasks1 {
+    border-color: #f05d22;
+}
+
+.li-tasks1:hover {
+    border-right: 10px solid #f05d22;
+}
+
+.li-tasks2 {
+    border-color: #8bc63e;
+}
+
+.li-tasks2:hover {
+    border-right: 10px solid #8bc63e;
+}
+
+.li-tasks3 {
+    border-color: #fcba30;
+}
+
+.li-tasks3:hover {
+    border-right: 10px solid #fcba30;
+}
+
+.li-tasks4 {
+    border-color: #1ccfc9;
+}
+
+.li-tasks4:hover {
+    border-right: 10px solid #1ccfc9;
+}
+
+.li-tasks5 {
+    border-color: #493224;
+}
+
+.li-tasks5:hover {
+    border-right: 10px solid #493224;
+}
+
+.li-tasks6 {
+    border-color: #735094;
+}
+
+.li-tasks6:hover {
+    border-right: 10px solid #735094;
+}
+
+.li-tasks7 {
+    border-color: #356422;
+}
+
+.li-tasks7:hover {
+    border-right: 10px solid #356422;
+}
+
+h1 + p {
+    font-size: 150%;
+}
+
+.main-table {
+    border: 0;
+    width: 100%;
+}
+
+.img-areas {
+    text-align: center;
+    opacity: 0.65;
+    float: left;
+    margin-right: 10px;
+    padding-left: 40px;
+}
+
+.header {
+    text-align: center;
+    font-family: distroy, sans-serif;
+    font-size: large;
+    color: yellow;
+    font-style: italic;
+}
+
+.gradient-white {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(135deg, yellow, aqua);
+    filter: saturate(300%);
+}
+
+.gradient-blue {
+    color: transparent;
+    font-weight: bold;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(190deg, rebeccapurple, yellow);
+    filter: saturate(300%);
+}
+
+.gradient-black {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(100deg, sandybrown, gold);
+    filter: saturate(500%);
+    font-weight: bold;
+}
+
+
+.radio-button-block {
+    text-align: right;
+    width: 15%;
+}
+/*Отступы элементов ввода в процентах*/
+.input-text-block {
+    width: 20%;
+}
+
+.input-button-block {
+    width: 10%;
+}
+
+.submit-button-block {
+    width: 15%;
+}
+
+.side-panel {
+    width: 20%;
+}
+
+.radio-button {
+    /*cursor: pointer;*/
+    display: none;
+}
+
+.custom-radio {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    cursor: pointer;
+    background-image: url("../img/radio-1.png");
+    background-size: cover;
+}
+/*Псевдоклассы*/
+.custom-radio:hover {
+    background-color: #0000bb;
+}
+
+.custom-radio:active {
+    outline: 2px dotted black;
+    box-shadow: 0 0 0 1px gold;
+}
+
+.radio-button:checked + .custom-radio {
+    background-image: url("../img/radio-2.png");
+    background-size: cover;
+}
+/*Селектор потомков*/
+.radio-button-block label {
+    cursor: pointer;
+    padding-left: 25px;
+    user-select: none;
+}
+
+.input-text {
+    margin-left: 100px;
+    opacity: 0.8;
+    border: 3px solid #0f0;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+    background-color: #1ccfc9;
+    font-family: distroy, sans-serif;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+.input-text:hover {
+    background-color: #088b85;
+}
+
+.input-text:focus {
+    outline:  2px dotted black;
+    box-shadow: 0 0 0 4px gold;
+}
+
+.text-label {
+    text-align: center;
+}
+
+.input-button {
+    cursor: pointer;
+    font-family: distroy, sans-serif;
+    font-size: large;
+    background-color: #1ccfc9;
+}
+
+.input-button:hover {
+    background-color: #088b85;
+}
+
+.input-button:focus {
+    outline:  2px dotted black;
+    box-shadow: 0 0 0 1px gold;
+}
+
+.input-button:active {
+    background-color: #333;
+    border-color: #fff;
+    color: #eee;
+}
+
+.submit-button {
+    background-image: linear-gradient(to bottom, #a3d4ff, #88bcf2);
+    border-radius:3px;
+    line-height: 22px;
+    padding:7px 12px;
+    margin:0;
+    border: 1px solid #88bcf2;
+    color: gold;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-shadow: 0 1px 1px #70A7E0;
+    cursor:pointer;
+}
+
+.submit-button:hover {
+    background-image: linear-gradient(to bottom, #6090bb, #4478b0);
+}
+
+.submit-button:focus {
+    outline:  2px dotted black;
+    box-shadow: 0 0 0 3px gold;
+}
+
+.submit-button:active {
+    background-image: linear-gradient(to bottom, #000, #333);
+    border-color: #fff;
+    color: #eee;
+}
+
+.main-form {
+    text-align: center;
+}
+
+.data-table {
+    width: 100%;
+}
+
+.header-x {
+    text-align: right;
+    padding-right: 6px;
+}
+
+.data-header {
+    color: #aa9990;
+}
+
+.green-response {
+    color: green;
+}
+
+.red-response {
+    color: red;
+}
+
+.id-color {
+    color: #ddd;
+}
+
+h2 {
+    text-align: center;
+}
+
+.R {
+    text-align: left;
+}
