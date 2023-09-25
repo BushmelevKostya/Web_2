@@ -220,161 +220,161 @@
   </tr>
 </table>
 
-<%--<script src="script/send-form.js"></script>--%>
+<script src="script/send-form.js"></script>
 
-<!--<script src="script/validate-form.js"></script>-->
+<script src="script/validate-form.js"></script>
 
-<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--%>
-<%--<script src="script/send-ajax-request.js"></script>--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="script/send-ajax-request.js"></script>
 
-<%--<script>--%>
-<%--  class Query {--%>
-<%--    constructor(id, x, y, R, result, startTime, workTime) {--%>
-<%--      this._id = id;--%>
-<%--      this._x = x;--%>
-<%--      this._y = y;--%>
-<%--      this._R = R;--%>
-<%--      this._result = result;--%>
-<%--      this._startTime = startTime;--%>
-<%--      this._workTime = workTime;--%>
-<%--    }--%>
+<script>
+  class Query {
+    constructor(id, x, y, R, result, startTime, workTime) {
+      this._id = id;
+      this._x = x;
+      this._y = y;
+      this._R = R;
+      this._result = result;
+      this._startTime = startTime;
+      this._workTime = workTime;
+    }
 
-<%--    get id() {--%>
-<%--      return this._id;--%>
-<%--    }--%>
+    get id() {
+      return this._id;
+    }
 
-<%--    set id(value) {--%>
-<%--      this._id = value;--%>
-<%--    }--%>
+    set id(value) {
+      this._id = value;
+    }
 
-<%--    get startTime() {--%>
-<%--      return this._startTime;--%>
-<%--    }--%>
+    get startTime() {
+      return this._startTime;
+    }
 
-<%--    set startTime(value) {--%>
-<%--      this._startTime = value;--%>
-<%--    }--%>
+    set startTime(value) {
+      this._startTime = value;
+    }
 
-<%--    get x() {--%>
-<%--      return this._x;--%>
-<%--    }--%>
+    get x() {
+      return this._x;
+    }
 
-<%--    set x(value) {--%>
-<%--      this._x = value;--%>
-<%--    }--%>
+    set x(value) {
+      this._x = value;
+    }
 
-<%--    get y() {--%>
-<%--      return this._y;--%>
-<%--    }--%>
+    get y() {
+      return this._y;
+    }
 
-<%--    set y(value) {--%>
-<%--      this._y = value;--%>
-<%--    }--%>
+    set y(value) {
+      this._y = value;
+    }
 
-<%--    get R() {--%>
-<%--      return this._R;--%>
-<%--    }--%>
+    get R() {
+      return this._R;
+    }
 
-<%--    set R(value) {--%>
-<%--      this._R = value;--%>
-<%--    }--%>
+    set R(value) {
+      this._R = value;
+    }
 
-<%--    get result() {--%>
-<%--      return this._result;--%>
-<%--    }--%>
+    get result() {
+      return this._result;
+    }
 
-<%--    set result(value) {--%>
-<%--      this._result = value;--%>
-<%--    }--%>
+    set result(value) {
+      this._result = value;
+    }
 
-<%--    get workTime() {--%>
-<%--      return this._workTime;--%>
-<%--    }--%>
+    get workTime() {
+      return this._workTime;
+    }
 
-<%--    set workTime(value) {--%>
-<%--      this._workTime = value;--%>
-<%--    }--%>
-<%--  }--%>
+    set workTime(value) {
+      this._workTime = value;
+    }
+  }
 
-<%--  class TablePrinter {--%>
-<%--    constructor() {--%>
-<%--    }--%>
+  class TablePrinter {
+    constructor() {
+    }
 
-<%--    run(x, y, R, res, workTime) {--%>
-<%--      var array;--%>
-<%--      try {--%>
-<%--        var stringArray = localStorage.getItem("array");--%>
-<%--        array = JSON.parse(stringArray);--%>
-<%--      } catch--%>
-<%--              (error) {--%>
-<%--        console.log(error);--%>
-<%--      } finally {--%>
-<%--        array = array || [];--%>
-<%--        // let res = <?php echo $res; ?>;--%>
-<%--        // let workTime = <?php echo $workTime; ?>;--%>
-<%--        let id = array.length || 0;--%>
-<%--        id += 1;--%>
-<%--        let startTime = new Date().toLocaleString();--%>
-<%--        let query = new Query(id, x, y, R, res, startTime, workTime);--%>
+    run(x, y, R, res, workTime) {
+      var array;
+      try {
+        var stringArray = localStorage.getItem("array");
+        array = JSON.parse(stringArray);
+      } catch
+              (error) {
+        console.log(error);
+      } finally {
+        array = array || [];
+        // let res = <?php echo $res; ?>;
+        // let workTime = <?php echo $workTime; ?>;
+        let id = array.length || 0;
+        id += 1;
+        let startTime = new Date().toLocaleString();
+        let query = new Query(id, x, y, R, res, startTime, workTime);
 
-<%--        array.push(query);--%>
-<%--        stringArray = JSON.stringify(array);--%>
-<%--        localStorage.setItem("array", stringArray);--%>
-<%--      }--%>
+        array.push(query);
+        stringArray = JSON.stringify(array);
+        localStorage.setItem("array", stringArray);
+      }
 
-<%--      let stringObject = localStorage.getItem("array");--%>
-<%--      var object = JSON.parse(stringObject);--%>
+      let stringObject = localStorage.getItem("array");
+      var object = JSON.parse(stringObject);
 
-<%--      let size = object.length;--%>
+      let size = object.length;
 
-<%--      var tbody = document.getElementById("data-body");--%>
-<%--      tbody.innerHTML = "";--%>
+      var tbody = document.getElementById("data-body");
+      tbody.innerHTML = "";
 
-<%--      for (let i = 0; i < size; i++) {--%>
-<%--        var row = tbody.insertRow(-1);--%>
+      for (let i = 0; i < size; i++) {
+        var row = tbody.insertRow(-1);
 
-<%--        var cell = row.insertCell(0);--%>
-<%--        let data = object[i]._id;--%>
-<%--        let newData = document.createTextNode(data);--%>
-<%--        cell.classList.add('id-color');--%>
-<%--        cell.appendChild(newData);--%>
-<%--        cell = row.insertCell(1);--%>
-<%--        data = object[i]._x;--%>
-<%--        newData = document.createTextNode(data);--%>
-<%--        cell.appendChild(newData);--%>
-<%--        cell = row.insertCell(2);--%>
-<%--        data = object[i]._y;--%>
-<%--        newData = document.createTextNode(data);--%>
-<%--        cell.appendChild(newData);--%>
-<%--        cell = row.insertCell(3);--%>
-<%--        data = object[i]._R;--%>
-<%--        newData = document.createTextNode(data);--%>
-<%--        cell.appendChild(newData);--%>
-<%--        cell = row.insertCell(4);--%>
-<%--        data = object[i]._result;--%>
-<%--        if (data) {--%>
-<%--          data = "Да";--%>
-<%--          cell.classList.add('green-response');--%>
-<%--        } else {--%>
-<%--          data = "Нет";--%>
-<%--          cell.classList.add('red-response');--%>
-<%--        }--%>
-<%--        newData = document.createTextNode(data);--%>
-<%--        cell.appendChild(newData);--%>
-<%--        cell = row.insertCell(5);--%>
-<%--        // data = new Date().toLocaleString();--%>
-<%--        data = object[i]._startTime;--%>
-<%--        newData = document.createTextNode(data);--%>
-<%--        cell.appendChild(newData);--%>
-<%--        cell = row.insertCell(6);--%>
-<%--        data = object[i]._workTime.toFixed(6);--%>
-<%--        newData = document.createTextNode(data);--%>
-<%--        cell.appendChild(newData);--%>
-<%--      }--%>
-<%--    }--%>
-<%--  }--%>
+        var cell = row.insertCell(0);
+        let data = object[i]._id;
+        let newData = document.createTextNode(data);
+        cell.classList.add('id-color');
+        cell.appendChild(newData);
+        cell = row.insertCell(1);
+        data = object[i]._x;
+        newData = document.createTextNode(data);
+        cell.appendChild(newData);
+        cell = row.insertCell(2);
+        data = object[i]._y;
+        newData = document.createTextNode(data);
+        cell.appendChild(newData);
+        cell = row.insertCell(3);
+        data = object[i]._R;
+        newData = document.createTextNode(data);
+        cell.appendChild(newData);
+        cell = row.insertCell(4);
+        data = object[i]._result;
+        if (data) {
+          data = "Да";
+          cell.classList.add('green-response');
+        } else {
+          data = "Нет";
+          cell.classList.add('red-response');
+        }
+        newData = document.createTextNode(data);
+        cell.appendChild(newData);
+        cell = row.insertCell(5);
+        // data = new Date().toLocaleString();
+        data = object[i]._startTime;
+        newData = document.createTextNode(data);
+        cell.appendChild(newData);
+        cell = row.insertCell(6);
+        data = object[i]._workTime.toFixed(6);
+        newData = document.createTextNode(data);
+        cell.appendChild(newData);
+      }
+    }
+  }
 
-<%--</script>--%>
+</script>
 
 </body>
 </html>
