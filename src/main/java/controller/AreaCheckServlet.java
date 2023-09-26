@@ -40,8 +40,7 @@ public class AreaCheckServlet extends HttpServlet {
 			double R = (double) data.get("press_button");
 			
 			boolean res = checkPlace(x, y, R);
-			if (res) updateData(x, y, R, request, response);
-//			else printMiss();
+			updateData(x, y, R, res, request, response);
 			
 		} catch (NullPointerException | ServletException exception) {
 			response.setContentType("application/json");
@@ -72,11 +71,12 @@ public class AreaCheckServlet extends HttpServlet {
 		return (x >= -R && y >= -R);
 	}
 	
-	public void updateData (double x, double y, double R, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void updateData (double x, double y, double R, boolean res, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		var dote = new Dote(x, y);
 		DotesCollection.addDot(dote, request);
 		DotesCollection.addR(R, request);
-		DotesCollection.addAnswer("yes", request);
+		if (res) DotesCollection.addAnswer("yes", request);
+		else DotesCollection.addAnswer("no", request);
 		response.sendRedirect("./view");
 	}
 }
