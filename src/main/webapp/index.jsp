@@ -1,7 +1,7 @@
 <%@ page import="model.Dote" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html public "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -139,7 +139,11 @@
   <tr>
     <td colspan="4" class="gradient-blue">
       <h2>ТЗ</h2>
-      <img src="img/areas.png" width=420 alt="areas" class="img-areas">
+
+
+      <canvas id = "shedule" width="400" height="300"></canvas>
+
+
       <p>Разработать PHP-скрипт, определяющий попадание точки на координатной плоскости в заданную
         область, и
         создать HTML-страницу, которая формирует данные для отправки их на обработку этому скрипту.
