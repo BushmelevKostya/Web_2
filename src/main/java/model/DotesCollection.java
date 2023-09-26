@@ -61,7 +61,6 @@ public class DotesCollection implements Serializable {
 		} finally {
 			list.add(answer);
 			session.setAttribute("Answer-list", list);
-			System.out.println(list.size());
 		}
 	}
 }
