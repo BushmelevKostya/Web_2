@@ -1,15 +1,18 @@
 package controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Dote;
 import model.DotesCollection;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 @WebServlet(name = "AreaCheckServlet", value = "/hit")
 public class AreaCheckServlet extends HttpServlet {
@@ -25,16 +28,21 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
-			double x = Double.parseDouble(request.getParameter("radio"));
-			double y = Double.parseDouble(request.getParameter("text"));
-			double R = Double.parseDouble(request.getParameter("press_button"));
+			HttpSession session = request.getSession();
+			var gson = new Gson();
+			String str = (String) session.getAttribute("data");
+			var data = gson.fromJson(str, HashMap.class);
+			
+			double x = (double) data.get("radio");
+			double y = (double) data.get("text");
+			double R = (double) data.get("press_button");
+			
 			boolean res = checkPlace(x, y, R);
-			var dc = new DotesCollection();
+			var dc = DotesCollection.get(request);
 			var dote = new Dote(x, y);
-			if (res) dc.add(dote);
-			sendResponse(res, dc, response);
+			if (res) DotesCollection.add(dote, request);
+			reviewTable(res, dc, request, response);
 		} catch (NullPointerException exception) {
-			System.out.println(2);
 			response.setContentType("application/json");
 			var writer = response.getWriter();
 			writer.write(exception.getMessage() + "\n");
@@ -63,21 +71,9 @@ public class AreaCheckServlet extends HttpServlet {
 		return (x >= -R && y >= -R);
 	}
 	
-	public void sendResponse (boolean res, DotesCollection dc, HttpServletResponse response) throws IOException {
-		var om = new ObjectMapper();
-		System.out.println(3);
-		String json;
-		if (res) {
-			json = om.writeValueAsString(dc.get());
-		}
-		else {
-			var answer = "The dote doesn't hits to region";
-			json = om.writeValueAsString(answer);
-		}
-		response.setContentType("application/json");
+	public void reviewTable (boolean res, ArrayList<Dote> dc, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		var writer = response.getWriter();
-		writer.write(json);
-		System.out.println(json);
+
 		writer.close();
 	}
 }

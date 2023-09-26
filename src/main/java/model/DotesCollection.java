@@ -1,26 +1,39 @@
 package model;
-import jakarta.ejb.Stateful;
-import jakarta.enterprise.context.SessionScoped;
+
+import com.google.gson.Gson;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@Stateful
-@SessionScoped
 public class DotesCollection implements Serializable {
-	private ArrayList<Dote> collection;
+	private static ArrayList<Dote> collection;
 	
-	public DotesCollection() {
-		create();
-	}
-	private void create() {
-		if (collection == null) this.collection = new ArrayList<>();
+	private DotesCollection() {
+	
 	}
 	
-	public void add (Dote dote) {
-		create();
-		collection.add(dote);
+	public static ArrayList<Dote> get(HttpServletRequest request) {
+		var session = request.getSession();
+		try {
+			collection = (ArrayList<Dote>) session.getAttribute("collection");
+			return collection;
+		} catch (NullPointerException exception) {
+			collection = new ArrayList<>();
+			session.setAttribute("collection", collection);
+			return collection;
+		}
 	}
 	
-	public ArrayList<Dote> get () {return collection;}
+	public static void add(Dote dote, HttpServletRequest request) {
+		var session = request.getSession();
+		try {
+			collection.add(dote);
+		} catch (NullPointerException exception) {
+			collection = new ArrayList<>();
+			collection.add(dote);
+		} finally {
+			session.setAttribute("collection", collection);
+		}
+	}
 }

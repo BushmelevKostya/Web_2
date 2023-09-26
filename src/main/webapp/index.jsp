@@ -23,7 +23,7 @@
     </td>
     <td rowspan="14" class="side-panel"></td>
   </tr>
-  <form method="POST" class="main-form" action="hit">
+  <form method="POST" class="main-form" action="controller">
     <tr>
       <th class="header-x">x</th>
       <th>y</th>
