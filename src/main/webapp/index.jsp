@@ -1,3 +1,5 @@
+<%@ page import="model.Dote" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html public "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
@@ -36,7 +38,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio1">-2
+        <label for="radio1">-4
           <input type="radio" id="radio1" name="radio" value="-4" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -55,7 +57,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio2">-1.5
+        <label for="radio2">-3
           <input type="radio" id="radio2" name="radio" value="-3" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -63,7 +65,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio3">-1
+        <label for="radio3">-2
           <input type="radio" id="radio3" name="radio" value="-2" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -75,7 +77,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio4">-0.5
+        <label for="radio4">-1
           <input type="radio" id="radio4" name="radio" value="-1" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -95,7 +97,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio6">0.5
+        <label for="radio6">1
           <input type="radio" id="radio6" name="radio" value="1" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -103,7 +105,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio7">1
+        <label for="radio7">2
           <input type="radio" id="radio7" name="radio" value="2" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -115,7 +117,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio8">1.5
+        <label for="radio8">3
           <input type="radio" id="radio8" name="radio" value="3" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -123,7 +125,7 @@
     </tr>
     <tr>
       <td class="radio-button-block">
-        <label for="radio9">2
+        <label for="radio9">4
           <input type="radio" id="radio9" name="radio" value="4" class="radio-button">
           <span class="custom-radio"></span>
         </label>
@@ -197,6 +199,48 @@
         </li>
       </ul>
     </td>
+  </tr>
+  <tr>
+  <td colspan="4">
+    <div class="data-table" id="main-data-table">
+      <table border="1" class="data-table" id="data-table">
+        <caption class="gradient-blue">Таблица результатов запроса</caption>
+        <tr>
+          <th class="data-header">id</th>
+          <th class="data-header">x</th>
+          <th class="data-header">y</th>
+          <th class="data-header">R</th>
+          <th class="data-header">Попадание</th>
+        </tr>
+        <tbody id="data-body">
+        <%
+          HttpSession httpSession = request.getSession();
+          ArrayList<Dote> dotList = (ArrayList<Dote>) httpSession.getAttribute("Dot-list");
+          ArrayList<Double> RList = (ArrayList<Double>) httpSession.getAttribute("R-list");
+          ArrayList<String> AnswerList = (ArrayList<String>) httpSession.getAttribute("Answer-list");
+          if (dotList == null) dotList = new ArrayList<>();
+          if (RList == null) RList = new ArrayList<>();
+          if (AnswerList == null) AnswerList = new ArrayList<>();
+          int size = dotList.size();
+          for (int i = 0; i < size; i++) {
+        %>
+        <tr>
+          <th><%= i + 1 %>
+          </th>
+          <th><%= dotList.get(i).x() %>
+          </th>
+          <th><%= dotList.get(i).y() %>
+          </th>
+          <th><%= RList.get(i) %>
+          </th>
+          <th><%= AnswerList.get(i) %>
+          </th>
+        </tr>
+        <% } %>
+        </tbody>
+      </table>
+    </div>
+  </td>
   </tr>
 </table>
 

@@ -11,7 +11,7 @@
     <link rel="icon" href="ico/favicon.ico">
 </head>
 <body>
-
+<a href="${pageContext.request.contextPath}/">Вернуться на главную страницу</a>
 <div class="data-table" id="main-data-table">
 
     <table border="1" class="data-table" id="data-table">
