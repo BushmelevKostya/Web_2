@@ -1,12 +1,14 @@
 document.getElementById("submit-button").addEventListener("click", function () {
-    sendAjaxRequest();
+    sendAjaxRequest(event);
 })
 
-function sendAjaxRequest() {
+function sendAjaxRequest(event) {
     const form = $("form");
+    event.preventDefault();
     $.ajax({
         type: "POST",
-        url: "/hit",
+        cache: false,
+        url: "hit",
         data: form.serialize(),
         contentType: 'application/json',
         success: function (response) {

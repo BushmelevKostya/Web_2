@@ -25,6 +25,10 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
+		System.out.println(request.getParameterNames().nextElement());
+		System.out.println(request.getParameterNames().nextElement());
+		System.out.println(request.getParameterNames().nextElement());
+
 			double x = Double.parseDouble(request.getParameter("radio"));
 			double y = Double.parseDouble(request.getParameter("text"));
 			double R = Double.parseDouble(request.getParameter("press_button"));
@@ -34,6 +38,7 @@ public class AreaCheckServlet extends HttpServlet {
 			if (res) dc.add(dote);
 			sendResponse(res, dc, response);
 		} catch (NullPointerException exception) {
+			System.out.println(2);
 			response.setContentType("application/json");
 			var writer = response.getWriter();
 			writer.write(exception.getMessage() + "\n");
@@ -64,6 +69,7 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	public void sendResponse (boolean res, DotesCollection dc, HttpServletResponse response) throws IOException {
 		var om = new ObjectMapper();
+		System.out.println(3);
 		String json;
 		if (res) {
 			json = om.writeValueAsString(dc.get());
@@ -75,6 +81,7 @@ public class AreaCheckServlet extends HttpServlet {
 		response.setContentType("application/json");
 		var writer = response.getWriter();
 		writer.write(json);
+		System.out.println(json);
 		writer.close();
 	}
 }
