@@ -23,7 +23,7 @@
     </td>
     <td rowspan="14" class="side-panel"></td>
   </tr>
-  <form method="POST" class="main-form" action="hitt">
+  <form method="POST" class="main-form" action="hit">
     <tr>
       <th class="header-x">x</th>
       <th>y</th>
@@ -32,8 +32,6 @@
       <td rowspan="10" class="submit-button-block">
         <input type="submit" class="submit-button" id="submit-button" value="Отправить">
       </td>
-
-      <script src="script/send-ajax-request.js"></script>
 
     </tr>
     <tr>

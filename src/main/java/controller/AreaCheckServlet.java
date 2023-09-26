@@ -25,10 +25,6 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
-		System.out.println(request.getParameterNames().nextElement());
-		System.out.println(request.getParameterNames().nextElement());
-		System.out.println(request.getParameterNames().nextElement());
-
 			double x = Double.parseDouble(request.getParameter("radio"));
 			double y = Double.parseDouble(request.getParameter("text"));
 			double R = Double.parseDouble(request.getParameter("press_button"));
