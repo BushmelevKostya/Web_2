@@ -1,3 +1,3 @@
 package model;
 
-record Dote(double x, double y) {}
+public record Dote(double x, double y) {}

@@ -1,30 +1,45 @@
 package controller;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import model.Dote;
+import model.DotesCollection;
 
 import java.io.IOException;
+import java.util.Arrays;
 
-@WebServlet(name = "AreaCheckServlet", value = "/AreaCheckServlet")
+@WebServlet(name = "AreaCheckServlet", value = "/hit")
 public class AreaCheckServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		run(request, response);
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		run(request, response);
 	}
 	
-	public void run(HttpServletRequest request, HttpServletResponse response) {
-		double x = Double.parseDouble(request.getParameter("x"));
-		double y = Double.parseDouble(request.getParameter("y"));
-		double R = Double.parseDouble(request.getParameter("R"));
-		
-		boolean res = checkPlace(x, y, R);
-		
+	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		try {
+			double x = Double.parseDouble(request.getParameter("radio"));
+			double y = Double.parseDouble(request.getParameter("text"));
+			double R = Double.parseDouble(request.getParameter("press_button"));
+			boolean res = checkPlace(x, y, R);
+			var dc = new DotesCollection();
+			var dote = new Dote(x, y);
+			if (res) dc.add(dote);
+			sendResponse(res, dc, response);
+		} catch (NullPointerException exception) {
+			response.setContentType("application/json");
+			var writer = response.getWriter();
+			writer.write(exception.getMessage() + "\n");
+			writer.write(Arrays.toString(exception.getStackTrace()));
+			writer.close();
+		}
 	}
 	
 	public boolean checkPlace(double x, double y, double R) {
@@ -45,5 +60,21 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	private boolean square(double x, double y, double R) {
 		return (x >= -R && y >= -R);
+	}
+	
+	public void sendResponse (boolean res, DotesCollection dc, HttpServletResponse response) throws IOException {
+		var om = new ObjectMapper();
+		String json;
+		if (res) {
+			json = om.writeValueAsString(dc.get());
+		}
+		else {
+			var answer = "The dote doesn't hits to region";
+			json = om.writeValueAsString(answer);
+		}
+		response.setContentType("application/json");
+		var writer = response.getWriter();
+		writer.write(json);
+		writer.close();
 	}
 }

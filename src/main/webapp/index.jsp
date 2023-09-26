@@ -11,6 +11,8 @@
 
 <body>
 
+
+
 <table class="main-table">
   <tr>
     <td rowspan="14" class="side-panel"></td>
@@ -21,7 +23,7 @@
     </td>
     <td rowspan="14" class="side-panel"></td>
   </tr>
-  <form method="GET" class="main-form">
+  <form method="POST" class="main-form" action="">
     <tr>
       <th class="header-x">x</th>
       <th>y</th>
@@ -30,6 +32,9 @@
       <td rowspan="10" class="submit-button-block">
         <input type="button" class="submit-button" id="submit-button" value="Отправить">
       </td>
+
+      <script src="script/send-ajax-request.js"></script>
+
     </tr>
     <tr>
       <td class="radio-button-block">
@@ -225,7 +230,6 @@
 <script src="script/validate-form.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="script/send-ajax-request.js"></script>
 
 <script>
   class Query {
