@@ -1,6 +1,8 @@
 package controller;
 
 import com.google.gson.Gson;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,11 +40,10 @@ public class AreaCheckServlet extends HttpServlet {
 			double R = (double) data.get("press_button");
 			
 			boolean res = checkPlace(x, y, R);
-			var dc = DotesCollection.get(request);
-			var dote = new Dote(x, y);
-			if (res) DotesCollection.add(dote, request);
-			reviewTable(res, dc, request, response);
-		} catch (NullPointerException exception) {
+			if (res) updateData(x, y, R, request, response);
+//			else printMiss();
+			
+		} catch (NullPointerException | ServletException exception) {
 			response.setContentType("application/json");
 			var writer = response.getWriter();
 			writer.write(exception.getMessage() + "\n");
@@ -71,9 +72,13 @@ public class AreaCheckServlet extends HttpServlet {
 		return (x >= -R && y >= -R);
 	}
 	
-	public void reviewTable (boolean res, ArrayList<Dote> dc, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		var writer = response.getWriter();
-
-		writer.close();
+	public void updateData (double x, double y, double R, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		var dc = DotesCollection.get(request);
+		var dote = new Dote(x, y);
+		DotesCollection.addDot(dote, request);
+		DotesCollection.addR(R, request);
+		DotesCollection.addAnswer("yes", request);
+		
+		response.sendRedirect("./view");
 	}
 }
