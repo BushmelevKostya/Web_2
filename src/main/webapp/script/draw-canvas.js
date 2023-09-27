@@ -1,15 +1,24 @@
-drawCanvas();
+drawCanvas("R");
 
 function drawCanvas(R) {
     const canvas = document.getElementById("shedule");
     let context = canvas.getContext("2d");
+
+    let R1 = R;
+    let R2 = "R/2";
+    let R3 = "-R/2";
+    let R4 = "-R";
+    if (R !== "R") {
+        R2 = String(R / 2);
+        R3 = String(-R / 2);
+        R4 = String(-R);
+    }
 
     context.fillStyle = "#EEE"
 
     context.fillRect(0, 0, 500, 500);
 
     context.fillStyle = "#0048ff"
-
 
     context.fillRect(80, 90, 160, 160);
 
@@ -38,10 +47,10 @@ function drawCanvas(R) {
     context.fillStyle = "#000";
     context.font = 'bold 13px Arial';
     context.fillText("Y", 250, 10);
-    context.fillText("R", 250, 95);
-    context.fillText("R/2", 250, 175);
-    context.fillText("-R/2", 250, 335);
-    context.fillText("-R", 250, 415);
+    context.fillText(R1, 250, 95);
+    context.fillText(R2, 250, 175);
+    context.fillText(R3, 252, 335);
+    context.fillText(R4, 252, 413);
     
     for(let i = 1; i <= 5; i++) {
         context.beginPath();
@@ -57,10 +66,10 @@ function drawCanvas(R) {
     context.stroke();
 
     context.fillText("X", 490, 270);
-    context.fillText("R", 395, 270);
-    context.fillText("R/2", 310, 270);
-    context.fillText("-R/2", 148, 270);
-    context.fillText("-R", 72, 270);
+    context.fillText(R1, 395, 270);
+    context.fillText(R2, 310, 270);
+    context.fillText(R3, 148, 270);
+    context.fillText(R4, 72, 270);
     for(let i = 1; i <= 5; i++) {
         context.beginPath();
         context.moveTo(80 * i, 260);

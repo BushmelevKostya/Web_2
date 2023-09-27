@@ -71,7 +71,7 @@
         </label>
       </td>
       <td rowspan="2" class="input-button-block">
-        <input type="button" id="button2" name="button" value="2" onclick="send.call(this, 1.5)"
+        <input type="button" id="button2" name="button" value="2" onclick="send.call(this, 2)"
                class="input-button">
       </td>
     </tr>
@@ -91,7 +91,7 @@
         </label>
       </td>
       <td rowspan="2" class="input-button-block">
-        <input type="button" id="button3" name="button" value="3" onclick="send.call(this, 2)"
+        <input type="button" id="button3" name="button" value="3" onclick="send.call(this, 3)"
                class="input-button">
       </td>
     </tr>
@@ -111,7 +111,7 @@
         </label>
       </td>
       <td rowspan="2" class="input-button-block">
-        <input type="button" id="button4" name="button" value="4" onclick="send.call(this, 2.5)"
+        <input type="button" id="button4" name="button" value="4" onclick="send.call(this, 4)"
                class="input-button">
       </td>
     </tr>
@@ -131,7 +131,7 @@
         </label>
       </td>
       <td class="input-button-block">
-        <input type="button" id="button5" name="button" value="5" onclick="send.call(this, 3)"
+        <input type="button" id="button5" name="button" value="5" onclick="send.call(this, 5)"
                class="input-button">
       </td>
     </tr>
@@ -245,10 +245,11 @@
   </td>
   </tr>
 </table>
-
+<input type="hidden" id="R-data">
 <script src="script/send-form.js"></script>
 <script src="script/draw-canvas.js"></script>
 <script src="script/validate-form.js"></script>
+<script src="script/touch-shedule.js"></script>
 
 </body>
 </html>

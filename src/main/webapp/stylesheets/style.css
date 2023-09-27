@@ -367,3 +367,7 @@ h2 {
 .R {
     text-align: left;
 }
+
+canvas {
+    position: relative;
+}
