@@ -20,7 +20,7 @@
     <td rowspan="14" class="side-panel"></td>
     <td colspan="4">
       <div>
-        <h4 class="header gradient-white">Bushmelev Kostya, Group P3218, Variant 2801</h4>
+        <h4 class="header gradient-white">Bushmelev Kostya, Group P3218, Variant 557474</h4>
       </div>
     </td>
     <td rowspan="14" class="side-panel"></td>
@@ -140,9 +140,7 @@
     <td colspan="4" class="gradient-blue">
       <h2>ТЗ</h2>
 
-
-      <canvas id = "shedule" width="400" height="300"></canvas>
-
+      <canvas id = "shedule" width="500" height="500"></canvas>
 
       <p>Разработать PHP-скрипт, определяющий попадание точки на координатной плоскости в заданную
         область, и
@@ -249,7 +247,7 @@
 </table>
 
 <script src="script/send-form.js"></script>
-
+<script src="script/draw-canvas.js"></script>
 <script src="script/validate-form.js"></script>
 
 </body>
