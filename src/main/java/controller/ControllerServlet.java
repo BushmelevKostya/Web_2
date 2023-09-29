@@ -1,14 +1,18 @@
 package controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import com.google.gson.reflect.TypeToken;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "ControllerServlet", value = "/controller")
 public class ControllerServlet extends HttpServlet {
@@ -26,13 +30,28 @@ public class ControllerServlet extends HttpServlet {
 		var names = request.getParameterNames();
 		var gson = new Gson();
 		HashMap<String, Double> params = new HashMap<>();
-		while (names.hasMoreElements()) {
-			String name = names.nextElement();
-			params.put(name, Double.valueOf(request.getParameter(name)));
+		if (names.hasMoreElements()) {
+			do {
+				String name = names.nextElement();
+				params.put(name, Double.valueOf(request.getParameter(name)));
+			} while (names.hasMoreElements());
 		}
-		var map = gson.toJson(params, HashMap.class);
+		else {
+			BufferedReader reader = request.getReader();
+			StringBuilder jsonBuffer = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				jsonBuffer.append(line);
+			}
+			
+			String json = jsonBuffer.toString();
+			Map<String, Object> data = gson.fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
+			params.put("radio", (Double) data.get("radio"));
+			params.put("text", (Double) data.get("text"));
+			params.put("press_button", (Double) data.get("press_button"));
+		}
 		HttpSession session = request.getSession();
-		session.setAttribute("data", map);
+		session.setAttribute("data", params);
 		
 		response.sendRedirect("./hit");
 	}

@@ -24,8 +24,9 @@ public class TableServlet extends HttpServlet {
         request.setAttribute("Dot-list", session.getAttribute("Dot-list"));
         request.setAttribute("R-list", session.getAttribute("R-list"));
         request.setAttribute("Answer-list", session.getAttribute("Answer-list"));
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
+		
+//		ServletContext servletContext = getServletContext();
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");
         dispatcher.forward(request, response);
 	}
 }

@@ -12,7 +12,6 @@ import model.Dote;
 import model.DotesCollection;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -31,14 +30,11 @@ public class AreaCheckServlet extends HttpServlet {
 	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
 			HttpSession session = request.getSession();
-			var gson = new Gson();
-			String str = (String) session.getAttribute("data");
-			var data = gson.fromJson(str, HashMap.class);
+			var data = (HashMap<String, Double>)session.getAttribute("data");
 			
-			double x = (double) data.get("radio");
-			double y = (double) data.get("text");
-			double R = (double) data.get("press_button");
-			
+			double x = data.get("radio");
+			double y = data.get("text");
+			double R = data.get("press_button");
 			boolean res = checkPlace(x, y, R);
 			updateData(x, y, R, res, request, response);
 			

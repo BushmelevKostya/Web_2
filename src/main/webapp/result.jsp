@@ -25,9 +25,9 @@
         </tr>
         <tbody id="data-body">
         <%
-            ArrayList<Dote> dotList = (ArrayList<Dote>) request.getAttribute("Dot-list");
-            ArrayList<Double> RList = (ArrayList<Double>) request.getAttribute("R-list");
-            ArrayList<String> AnswerList = (ArrayList<String>) request.getAttribute("Answer-list");
+            ArrayList<Dote> dotList = (ArrayList<Dote>) session.getAttribute("Dot-list");
+            ArrayList<Double> RList = (ArrayList<Double>) session.getAttribute("R-list");
+            ArrayList<String> AnswerList = (ArrayList<String>) session.getAttribute("Answer-list");
             int size = dotList.size();
             for (int i = 0; i < size; i++) {
         %>
