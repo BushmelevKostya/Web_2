@@ -247,9 +247,11 @@
 </table>
 <input type="hidden" id="R-data">
 <script src="script/send-form.js"></script>
-<script src="script/draw-canvas.js"></script>
+<script type="module" src="script/draw-canvas.js"></script>
 <script src="script/validate-form.js"></script>
 <script src="script/touch-shedule.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module" src="script/draw-dots.js"></script>
 
 </body>
 </html>
