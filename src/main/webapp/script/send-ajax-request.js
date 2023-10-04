@@ -17,11 +17,6 @@ function sendAjaxRequest(event) {
                 console.log(json.error);
                 form[0].reset();
             }
-            else {
-                // let tablePrinter = new TablePrinter();
-                // tablePrinter.run(json.x, json.y, json.R, json.res, json.workTime);
-                // form[0].reset();
-            }
         }
     });
 }
