@@ -49,14 +49,14 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	public boolean checkPlace(double x, double y, double R) {
 		boolean res = false;
-		if (x >= 0 && y >= 0) res = triangle(x, y, R);
-		else if (x <= 0 && y >= 0) res = circle(x, y, R);
-		else if (x <= 0 && y <= 0) res = square(x, y, R);
+		if (x >= 0 && y >= 0) res = circle(x, y, R);
+		else if (x <= 0 && y >= 0) res = square(x, y, R);
+		else if (x <= 0 && y <= 0) res = triangle(x, y, R);
 		return res;
 	}
 	
 	private boolean triangle(double x, double y, double R) {
-		return (y <= -x + R / 2);
+		return (y >= - 2 * x - R);
 	}
 	
 	private boolean circle(double x, double y, double R) {
@@ -64,7 +64,7 @@ public class AreaCheckServlet extends HttpServlet {
 	}
 	
 	private boolean square(double x, double y, double R) {
-		return (x >= -R && y >= -R);
+		return (x >= -R && y <= R);
 	}
 	
 	public void updateData (double x, double y, double R, boolean res, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
