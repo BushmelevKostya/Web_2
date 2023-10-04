@@ -12,8 +12,8 @@ function touchSchedule() {
             alert("Impossible to define coordinate! Try choosing a radius")
         } else {
             R = Number(R) / 2;
-            const x = ((event.offsetX - 240) / 80) * R;
-            const y = (-(event.offsetY - 250) / 80) * R;
+            const x = Math.round(((event.offsetX - 240) / 80) * R, 4);
+            const y = Math.round((-(event.offsetY - 250) / 80) * R, 4);
             sendRequest(x, y, R * 2);
         }
     });
