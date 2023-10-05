@@ -23,8 +23,6 @@ function drawDots() {
                     context.beginPath();
                     x = 240 + x * 80 / R * 2;
                     y = 250 - y * 80 / R * 2;
-                    console.log(x);
-                    console.log(y);
                     context.arc(x, y, 3, 0, 2 * Math.PI);
                     context.fill();
                 }
