@@ -15,13 +15,13 @@
 <div class="data-table" id="main-data-table">
 
     <table border="1" class="data-table" id="data-table">
-        <caption class="gradient-blue">Таблица результатов запроса</caption>
+        <caption class="gradient-red">Таблица результатов запроса</caption>
         <tr>
-            <th class="data-header">id</th>
-            <th class="data-header">x</th>
-            <th class="data-header">y</th>
-            <th class="data-header">R</th>
-            <th class="data-header">Попадание</th>
+            <th class="gradient-black">id</th>
+            <th class="gradient-black">x</th>
+            <th class="gradient-black">y</th>
+            <th class="gradient-black">R</th>
+            <th class="gradient-black">Попадание</th>
         </tr>
         <tbody id="data-body">
         <%
@@ -40,8 +40,20 @@
             </th>
             <th><%= RList.get(i) %>
             </th>
-            <th><%= AnswerList.get(i) %>
+            <%
+                String answer = AnswerList.get(i);
+                if (answer.equals("yes")) {
+            %>
+            <th class="green-response"><%= answer %>
             </th>
+            <%
+            } else {
+            %>
+            <th class="red-response"><%= answer %>
+            </th>
+            <%
+                }
+            %>
         </tr>
         <% } %>
         </tbody>

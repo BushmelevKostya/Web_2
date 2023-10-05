@@ -1,4 +1,4 @@
-export function drawDots() {
+function drawDots() {
     $.ajax({
         type: "GET",
         url: "getDotData",
@@ -32,3 +32,5 @@ export function drawDots() {
         }
     });
 }
+
+drawDots();

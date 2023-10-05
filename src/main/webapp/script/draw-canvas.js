@@ -1,6 +1,6 @@
 drawCanvas("R");
 
-export function drawCanvas(R) {
+function drawCanvas(R) {
 
     const canvas = document.getElementById("shedule");
     let context = canvas.getContext("2d");
@@ -87,6 +87,5 @@ export function drawCanvas(R) {
     context.lineTo(500, 250);
     context.stroke();
 
-    import {drawDots} from "./draw-dots";
     drawDots();
 }

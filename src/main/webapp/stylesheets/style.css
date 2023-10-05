@@ -10,18 +10,22 @@
 
 /*Наследование*/
 body {
-    font-family: distroy, sans-serif;
-    font-size: large;
-    color: yellow;
-    background-image: url("../img/fon.jpg");
+    font-family: "Trebuchet MS", "Lucida Sans", sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-indent: 30px;
+    background-image: url("../img/fon_girl.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-.side-panel {
-    background-image: url("../img/wood.jpg");
-    background-size: 100%;
+.header{
+    text-align: center;
+    font-family: distroy, sans-serif;
+    font-size: large;
+    color: black;
+    font-style: italic;
 }
 
 .border li:nth-child(2){border-color: #8bc63e;}
@@ -35,21 +39,8 @@ body {
 .border li:nth-child(4):hover {}
 .border li:nth-child(5):hover {}
 
-/*Каскадирование*/
-h4 {
-    color: red;
-}
-
 .header {
     color: red;
-}
-
-.header {
-    text-align: center;
-    font-family: distroy, sans-serif;
-    font-size: large;
-    color: yellow;
-    font-style: italic;
 }
 
 p {
@@ -60,14 +51,6 @@ p {
     letter-spacing: 1px;
     text-align: left;
     text-indent: 30px;
-}
-/*Псевдоэлемент*/
-p::first-letter {
-    font-family: rurintania, sans-serif;
-    font-size: 40px;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(45deg, red, white);
 }
 
 ul {
@@ -164,57 +147,70 @@ h1 + p {
     padding-left: 40px;
 }
 
-.header {
-    text-align: center;
-    font-family: distroy, sans-serif;
-    font-size: large;
-    color: yellow;
-    font-style: italic;
-}
-
-.gradient-white {
+.gradient-red {
     color: transparent;
     -webkit-background-clip: text;
-    background-image: linear-gradient(135deg, yellow, aqua);
-    filter: saturate(300%);
-}
-
-.gradient-blue {
-    color: transparent;
-    font-weight: bold;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(190deg, rebeccapurple, yellow);
+    background-image: linear-gradient(135deg, red, orangered);
     filter: saturate(300%);
 }
 
 .gradient-black {
     color: transparent;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(100deg, sandybrown, gold);
-    filter: saturate(500%);
     font-weight: bold;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(190deg, rebeccapurple, black);
+    filter: saturate(300%);
 }
 
+.content {
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+    vertical-align: top;
+    width: 50%;
+}
+
+.view {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;
+}
 
 .radio-button-block {
-    text-align: right;
-    width: 15%;
+    display: block;
+    text-align: center;
 }
-/*Отступы элементов ввода в процентах*/
+
 .input-text-block {
-    width: 20%;
+    display: block;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .input-button-block {
-    width: 10%;
+    display: block;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .submit-button-block {
-    width: 15%;
+display: block;
+    text-align: center;
+    padding-top: 10px;
 }
 
-.side-panel {
-    width: 20%;
+.canvas {
+    display: inline-block;
+}
+
+.data-table {
+    width: 100%;
+}
+
+.tasks {
+    display: block;
 }
 
 .radio-button {
@@ -253,7 +249,6 @@ h1 + p {
 }
 
 .input-text {
-    margin-left: 100px;
     opacity: 0.8;
     border: 3px solid #0f0;
     border-radius: 5px;
@@ -284,6 +279,7 @@ h1 + p {
     font-family: distroy, sans-serif;
     font-size: large;
     background-color: #1ccfc9;
+    margin-left: 10px;
 }
 
 .input-button:hover {
@@ -331,21 +327,15 @@ h1 + p {
     color: #eee;
 }
 
-.main-form {
-    text-align: center;
-}
-
-.data-table {
-    width: 100%;
+.data-body {
+    font-family: distroy, "Trebuchet MS", "Lucida Sans", sans-serif;
+    font-size: 18px;
+    color: black;
 }
 
 .header-x {
     text-align: right;
     padding-right: 6px;
-}
-
-.data-header {
-    color: #aa9990;
 }
 
 .green-response {
@@ -358,16 +348,4 @@ h1 + p {
 
 .id-color {
     color: #ddd;
-}
-
-h2 {
-    text-align: center;
-}
-
-.R {
-    text-align: left;
-}
-
-canvas {
-    position: relative;
 }
