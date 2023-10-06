@@ -8,7 +8,7 @@ function sendAjaxRequest(event) {
     $.ajax({
         type: "POST",
         cache: false,
-        url: "hit",
+        url: "controller",
         data: form.serialize(),
         contentType: 'application/json',
         success: function (response) {

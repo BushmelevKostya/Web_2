@@ -1,66 +1,46 @@
 package model;
 
-import com.google.gson.Gson;
-import jakarta.servlet.http.HttpServletRequest;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DotesCollection implements Serializable {
-	private static ArrayList<Dote> collection;
+	private static DotesCollection collection;
+	private final ArrayList<Dote> dotCollection;
+	private final ArrayList<Double> RCollection;
+	private final ArrayList<String> answerCollection;
 	
 	private DotesCollection() {
-	
+		dotCollection = new ArrayList<>();
+		RCollection = new ArrayList<>();
+		answerCollection = new ArrayList<>();
 	}
 	
-	public static ArrayList<Dote> get(HttpServletRequest request) {
-		var session = request.getSession();
-		try {
-			collection = (ArrayList<Dote>) session.getAttribute("collection");
-			return collection;
-		} catch (NullPointerException exception) {
-			collection = new ArrayList<>();
-			session.setAttribute("collection", collection);
-			return collection;
-		}
+	public static DotesCollection getCollection() {
+		if (collection == null) collection = new DotesCollection();
+		return collection;
 	}
 	
-	public static void addDot(Dote dot, HttpServletRequest request) {
-		var session = request.getSession();
-		try {
-			collection.add(dot);
-		} catch (NullPointerException exception) {
-			collection = new ArrayList<>();
-			collection.add(dot);
-		} finally {
-			session.setAttribute("Dot-list", collection);
-		}
+	public ArrayList<Dote> getDotCollection() {
+		return dotCollection;
 	}
 	
-	public static void addR(Double R, HttpServletRequest request) {
-		var session = request.getSession();
-		ArrayList<Double> list = new ArrayList<>();
-		try {
-			var attr = (ArrayList<Double>)session.getAttribute("R-list");
-			if (attr != null) list = attr;
-		} catch (NullPointerException exception) {
-			list = new ArrayList<>();
-		} finally {
-			list.add(R);
-			session.setAttribute("R-list", list);
-		}
+	public ArrayList<Double> getRCollection() {
+		return RCollection;
 	}
 	
-	public static void addAnswer(String answer, HttpServletRequest request) {
-		var session = request.getSession();
-		ArrayList<String> list = new ArrayList<>();
-		try {
-			var attr = (ArrayList<String>)session.getAttribute("Answer-list");
-			if (attr != null) list = attr;
-		} catch (NullPointerException ignored) {
-		} finally {
-			list.add(answer);
-			session.setAttribute("Answer-list", list);
-		}
+	public ArrayList<String> getAnswerCollection() {
+		return answerCollection;
+	}
+	
+	public void addDot(Dote dot) {
+		dotCollection.add(dot);
+	}
+	
+	public void addR(Double R) {
+		RCollection.add(R);
+	}
+	
+	public void addAnswer(String answer) {
+		answerCollection.add(answer);
 	}
 }

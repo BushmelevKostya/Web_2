@@ -1,10 +1,11 @@
-package model;
+package view;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.Dote;
 import netscape.javascript.JSObject;
 
 import java.io.IOException;

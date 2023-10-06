@@ -69,10 +69,17 @@ public class AreaCheckServlet extends HttpServlet {
 	
 	public void updateData (double x, double y, double R, boolean res, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		var dote = new Dote(x, y);
-		DotesCollection.addDot(dote, request);
-		DotesCollection.addR(R, request);
-		if (res) DotesCollection.addAnswer("yes", request);
-		else DotesCollection.addAnswer("no", request);
+		DotesCollection collection = DotesCollection.getCollection();
+		collection.addDot(dote);
+		collection.addR(R);
+		if (res) collection.addAnswer("yes");
+		else collection.addAnswer("no");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("Dot-list", collection.getDotCollection());
+		session.setAttribute("R-list", collection.getRCollection());
+		session.setAttribute("Answer-list", collection.getAnswerCollection());
+		
 		response.sendRedirect("./view");
 	}
 }
