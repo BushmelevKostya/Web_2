@@ -53,9 +53,15 @@ public class ControllerServlet extends HttpServlet {
 			}
 			String json = jsonBuffer.toString();
 			Map<String, Object> data = gson.fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
+			try {
 			params.put("radio", Double.valueOf((String) data.get("radio")));
 			params.put("text", Double.valueOf((String) data.get("text")));
 			params.put("press_button", (Double) data.get("press_button"));
+			} catch (Exception exception) {
+				request.setAttribute("error", exception.getMessage());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("data", params);

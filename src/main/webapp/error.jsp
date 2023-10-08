@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <%= request.getAttribute("error") %>
+<a href="${pageContext.request.contextPath}/">Вернуться на главную страницу</a>
+<p class="error-message">
+<%= "   Error: " + request.getAttribute("error") + ".\nPlease check correctness of fields" %>
+</p>
 </body>
 
 </html>

@@ -30,12 +30,18 @@ public class AreaCheckServlet extends HttpServlet {
 	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
 			HttpSession session = request.getSession();
-			var data = (HashMap<String, Double>)session.getAttribute("data");
-			double x = data.get("radio");
-			double y = data.get("text");
-			double R = data.get("press_button");
-			boolean res = checkPlace(x, y, R);
-			updateData(x, y, R, res, request, response);
+			var data = (HashMap<String, Double>) session.getAttribute("data");
+			try {
+				double x = data.get("radio");
+				double y = data.get("text");
+				double R = data.get("press_button");
+				boolean res = checkPlace(x, y, R);
+				updateData(x, y, R, res, request, response);
+			} catch (Exception exception) {
+				request.setAttribute("error", exception.getMessage());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+				dispatcher.forward(request, response);
+			}
 			
 		} catch (NullPointerException | ServletException exception) {
 			response.setContentType("application/json");
@@ -55,7 +61,7 @@ public class AreaCheckServlet extends HttpServlet {
 	}
 	
 	private boolean triangle(double x, double y, double R) {
-		return (y >= - 2 * x - R);
+		return (y >= -2 * x - R);
 	}
 	
 	private boolean circle(double x, double y, double R) {
@@ -66,7 +72,7 @@ public class AreaCheckServlet extends HttpServlet {
 		return (x >= -R && y <= R);
 	}
 	
-	public void updateData (double x, double y, double R, boolean res, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void updateData(double x, double y, double R, boolean res, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		var dote = new Dote(x, y);
 		DotesCollection collection = DotesCollection.getCollection();
 		collection.addDot(dote);

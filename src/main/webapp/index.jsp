@@ -144,7 +144,7 @@
 
 <div class="view">
     <div class="canvas">
-        <canvas id="shedule" width="500" height="500"></canvas>
+        <canvas id="shedule" class="shedule" width="500" height="500"></canvas>
     </div>
 
     <div class="data-table" id="main-data-table">
