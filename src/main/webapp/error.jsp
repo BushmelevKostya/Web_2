@@ -1,16 +1,16 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kosti
-  Date: 10/6/2023
-  Time: 1:34 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Bomb project</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="icon" href="ico/favicon.ico">
+</head>
+
+<body>
+    <%= request.getAttribute("error") %>
 </body>
+
 </html>

@@ -31,7 +31,6 @@ public class AreaCheckServlet extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			var data = (HashMap<String, Double>)session.getAttribute("data");
-			
 			double x = data.get("radio");
 			double y = data.get("text");
 			double R = data.get("press_button");

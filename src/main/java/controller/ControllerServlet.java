@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,14 +27,21 @@ public class ControllerServlet extends HttpServlet {
 		delegate(request, response);
 	}
 	
-	public void delegate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void delegate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		var names = request.getParameterNames();
 		var gson = new Gson();
 		HashMap<String, Double> params = new HashMap<>();
 		if (names.hasMoreElements()) {
 			do {
-				String name = names.nextElement();
-				params.put(name, Double.valueOf(request.getParameter(name)));
+				try {
+					
+					String name = names.nextElement();
+					params.put(name, Double.valueOf(request.getParameter(name)));
+				} catch (Exception exception) {
+					request.setAttribute("error", exception.getMessage());
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
+					dispatcher.forward(request, response);
+				}
 			} while (names.hasMoreElements());
 		}
 		else {
@@ -43,16 +51,14 @@ public class ControllerServlet extends HttpServlet {
 			while ((line = reader.readLine()) != null) {
 				jsonBuffer.append(line);
 			}
-			
 			String json = jsonBuffer.toString();
 			Map<String, Object> data = gson.fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
-			params.put("radio", (Double) data.get("radio"));
-			params.put("text", (Double) data.get("text"));
+			params.put("radio", Double.valueOf((String) data.get("radio")));
+			params.put("text", Double.valueOf((String) data.get("text")));
 			params.put("press_button", (Double) data.get("press_button"));
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("data", params);
-		
 		response.sendRedirect("./hit");
 	}
 }

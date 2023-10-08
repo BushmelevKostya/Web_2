@@ -25,6 +25,7 @@
         </tr>
         <tbody id="data-body">
         <%
+            
             ArrayList<Dote> dotList = (ArrayList<Dote>) session.getAttribute("Dot-list");
             ArrayList<Double> RList = (ArrayList<Double>) session.getAttribute("R-list");
             ArrayList<String> AnswerList = (ArrayList<String>) session.getAttribute("Answer-list");

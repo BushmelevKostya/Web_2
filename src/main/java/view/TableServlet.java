@@ -21,11 +21,9 @@ public class TableServlet extends HttpServlet {
 	
 	private void run (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var session = request.getSession();
-        
         request.setAttribute("Dot-list", session.getAttribute("Dot-list"));
         request.setAttribute("R-list", session.getAttribute("R-list"));
         request.setAttribute("Answer-list", session.getAttribute("Answer-list"));
-		
 //		ServletContext servletContext = getServletContext();
         RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");
         dispatcher.forward(request, response);
