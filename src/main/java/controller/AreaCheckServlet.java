@@ -18,38 +18,23 @@ import java.util.HashMap;
 @WebServlet(name = "AreaCheckServlet", value = "/hit")
 public class AreaCheckServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		run(request, response);
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		run(request, response);
 	}
 	
-	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		try {
-			HttpSession session = request.getSession();
-			var data = (HashMap<String, Double>) session.getAttribute("data");
-			try {
-				double x = data.get("radio");
-				double y = data.get("text");
-				double R = data.get("press_button");
-				boolean res = checkPlace(x, y, R);
-				updateData(x, y, R, res, request, response);
-			} catch (Exception exception) {
-				request.setAttribute("error", exception.getMessage());
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-				dispatcher.forward(request, response);
-			}
-			
-		} catch (NullPointerException | ServletException exception) {
-			response.setContentType("application/json");
-			var writer = response.getWriter();
-			writer.write(exception.getMessage() + "\n");
-			writer.write(Arrays.toString(exception.getStackTrace()));
-			writer.close();
-		}
+	public void run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		var data = (HashMap<String, Double>) session.getAttribute("data");
+		double x = data.get("radio");
+		double y = data.get("text");
+		double R = data.get("press_button");
+		boolean res = checkPlace(x, y, R);
+		updateData(x, y, R, res, request, response);
 	}
 	
 	public boolean checkPlace(double x, double y, double R) {

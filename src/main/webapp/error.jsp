@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +11,11 @@
 </head>
 
 <body>
-<a href="${pageContext.request.contextPath}/">Вернуться на главную страницу</a>
-<p class="error-message">
-<%= "   Error: " + request.getAttribute("error") + ".\nPlease check correctness of fields" %>
-</p>
+<a href="${pageContext.request.contextPath}/">Return to main page</a>
+<div class="error-info">
+    <p class="error-type">Type: <%= pageContext.getException().getClass().toString()%>
+    <p class="error-message">Message: <%= pageContext.getException().getMessage()%>
+</div>
 </body>
 
 </html>

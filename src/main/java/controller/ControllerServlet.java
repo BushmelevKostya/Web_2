@@ -33,18 +33,10 @@ public class ControllerServlet extends HttpServlet {
 		HashMap<String, Double> params = new HashMap<>();
 		if (names.hasMoreElements()) {
 			do {
-				try {
-					
-					String name = names.nextElement();
-					params.put(name, Double.valueOf(request.getParameter(name)));
-				} catch (Exception exception) {
-					request.setAttribute("error", exception.getMessage());
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-					dispatcher.forward(request, response);
-				}
+				String name = names.nextElement();
+				params.put(name, Double.valueOf(request.getParameter(name)));
 			} while (names.hasMoreElements());
-		}
-		else {
+		} else {
 			BufferedReader reader = request.getReader();
 			StringBuilder jsonBuffer = new StringBuilder();
 			String line;
@@ -52,16 +44,11 @@ public class ControllerServlet extends HttpServlet {
 				jsonBuffer.append(line);
 			}
 			String json = jsonBuffer.toString();
-			Map<String, Object> data = gson.fromJson(json, new TypeToken<Map<String, Object>>(){}.getType());
-			try {
+			Map<String, Object> data = gson.fromJson(json, new TypeToken<Map<String, Object>>() {
+			}.getType());
 			params.put("radio", Double.valueOf((String) data.get("radio")));
 			params.put("text", Double.valueOf((String) data.get("text")));
 			params.put("press_button", (Double) data.get("press_button"));
-			} catch (Exception exception) {
-				request.setAttribute("error", exception.getMessage());
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-				dispatcher.forward(request, response);
-			}
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("data", params);

@@ -382,9 +382,15 @@ a:hover::before {
     height: 100%;
 }
 
-.error-message {
-    display: block;
+.error-type {
+    display: inline-block;
     color: red;
     border: 4px dotted red;
     float: left;
+}
+
+.error-message {
+    display: inline-block;
+    color: red;
+    border: 4px dotted red;
 }
