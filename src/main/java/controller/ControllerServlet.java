@@ -52,6 +52,11 @@ public class ControllerServlet extends HttpServlet {
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("data", params);
-		response.sendRedirect("./hit");
+		String referer = request.getHeader("Referer");
+		referer += "controller";
+		response.setHeader("Referer", referer);
+//		response.sendRedirect("./hit");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("./hit");
+		requestDispatcher.forward(request, response);
 	}
 }
