@@ -13,11 +13,6 @@
     <filter-name>AreaCheckFilter</filter-name>
     <filter-class>controller.AreaCheckFilter</filter-class>
 </filter>
-<filter-mapping>
-    <filter-name>AreaCheckFilter</filter-name>
-    <dispatcher>FORWARD</dispatcher>
-    <url-pattern>/hit</url-pattern>
-</filter-mapping>
 
 <filter-mapping>
     <filter-name>AreaCheckFilter</filter-name>

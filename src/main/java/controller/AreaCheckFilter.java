@@ -1,16 +1,20 @@
 package controller;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
 
 import java.io.IOException;
 import java.rmi.ServerException;
 
-public class AreaCheckFilter implements Filter {
+
+@WebFilter(filterName = "AreaCheckFilter", servletNames = "AreaCheckServlet")
+public class AreaCheckFilter extends HttpFilter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		Filter.super.init(filterConfig);
+		super.init(filterConfig);
 	}
 	
 	@Override
@@ -20,12 +24,12 @@ public class AreaCheckFilter implements Filter {
 		if (referer != null && referer.equals("http://localhost:8080/Gradle___web_app___Web_2_1_0_SNAPSHOT_war/controller")) {
 			chain.doFilter(request, response);
 		} else {
-			throw new ServerException("False address used");
+			((HttpServletResponse) response).sendRedirect(".");
 		}
 	}
 	
 	@Override
 	public void destroy() {
-		Filter.super.destroy();
+		super.destroy();
 	}
 }
